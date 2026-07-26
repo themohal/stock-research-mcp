@@ -1,0 +1,11 @@
+- img [ref=e2]:
+  - generic [ref=e22]: MODEL CONTEXT PROTOCOL · PYTHON
+  - generic [ref=e23]: Stock Research
+  - generic [ref=e24]: MCP Server
+  - generic [ref=e25]: Live market data & portfolio analysis for any AI assistant.
+  - generic [ref=e26]:
+    - generic [ref=e27]: Live Quotes
+    - generic [ref=e30]: Fundamentals
+    - generic [ref=e33]: Portfolio P&L
+    - generic [ref=e36]: News
+  - generic [ref=e39]: FastMCP · yfinance · Streamable HTTP · Deployed on Render

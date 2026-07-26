@@ -28,7 +28,7 @@ from starlette.responses import JSONResponse, PlainTextResponse
 import portfolio
 
 mcp: FastMCP = FastMCP(
-    name="Portfolio Research",
+    name="Stock Market Research Demo MCP By Muhammad Farjad Ali Raza",
     instructions=(
         "Tools for investment and stock-portfolio research using live Yahoo "
         "Finance data. Use get_quote/get_fundamentals for a single ticker, "

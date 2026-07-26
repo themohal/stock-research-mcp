@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Stock Research MCP Server" width="100%">
+</p>
+
 # Portfolio Research MCP Server 📈
 
 A [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that gives any
@@ -8,6 +12,20 @@ Google Antigravity, Windsurf, and terminal-based agents.
 
 > Ask your assistant: *"Analyze my portfolio: 10 AAPL bought at $150 and 5 MSFT at $300,"*
 > and it will call this server, price the holdings live, and report your gain/loss and weights.
+
+---
+
+> ## ⏳ First request is slow — please read
+> The public demo is hosted on **Render's free tier**, which **puts the server to sleep after
+> ~15 minutes of inactivity**. When you send your first request after it has been idle, Render
+> has to wake it up (a "cold start"), which takes **roughly 30–60 seconds**.
+>
+> - Your **first** message may hang or time out — this is normal. **Just wait and try again**;
+>   once awake, the server responds instantly.
+> - **Tip:** open [`https://stock-research-mcp.onrender.com/health`](https://stock-research-mcp.onrender.com/health)
+>   in your browser first. When it shows `ok`, the server is warm and ready.
+> - This delay only affects the **free hosted demo**. A [local run](#quick-start-local) or a
+>   [paid Render instance](#deploy-free-on-render) has **no cold start**.
 
 ---
 
