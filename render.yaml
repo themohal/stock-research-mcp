@@ -1,0 +1,17 @@
+# Render infrastructure-as-code.
+# Push this repo to GitHub, then in the Render dashboard: New + > Blueprint,
+# point it at the repo, and Render reads this file. Set MCP_AUTH_TOKEN when
+# prompted (it is intentionally not stored here).
+services:
+  - type: web
+    name: portfolio-research-mcp
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /health
+    envVars:
+      - key: MCP_AUTH_TOKEN
+        sync: false        # set this yourself in the dashboard; keeps it secret
+      - key: PYTHON_VERSION
+        value: "3.12"
