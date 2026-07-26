@@ -11,6 +11,24 @@ Google Antigravity, Windsurf, and terminal-based agents.
 
 ---
 
+## 🚀 Try it instantly (public demo)
+
+A live instance is already hosted — you don't need to deploy anything to test it.
+
+| | |
+|---|---|
+| **URL** | `https://stock-research-mcp.onrender.com/mcp` |
+| **Auth header** | `Authorization: Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98` |
+
+Drop those into any config block in [Connect it to your IDE / agent](#connect-it-to-your-ide--agent) below and start asking questions.
+
+> ⚠️ **This is a shared public demo token** for trying the server out. It may be rate-limited,
+> rotated, or taken down at any time, and the instance sleeps after ~15 min idle (first call
+> may take 30–60s to wake). For anything real, [deploy your own](#deploy-free-on-render) and set
+> your own private `MCP_AUTH_TOKEN`.
+
+---
+
 ## Tools
 
 | Tool | What it does |
@@ -31,8 +49,8 @@ Data source: [`yfinance`](https://pypi.org/project/yfinance/) — free, no API k
 Requires Python 3.10+.
 
 ```bash
-git clone <your-repo-url> portfolio-research-mcp
-cd portfolio-research-mcp
+git clone <your-repo-url> stock-research-mcp
+cd stock-research-mcp
 
 python -m venv .venv
 # Windows:
@@ -78,8 +96,9 @@ included.
 
 ## Connect it to your IDE / agent
 
-Use your Render URL (or `http://127.0.0.1:8000/mcp` for local). Replace `<TOKEN>` with your
-`MCP_AUTH_TOKEN`.
+The blocks below use the **public demo** URL and token so you can copy-paste and go. To use
+your own deployment, swap in your Render URL and your private `MCP_AUTH_TOKEN` (or
+`http://127.0.0.1:8000/mcp` with no header for a local run).
 
 > **⚠️ The config key differs by client.** Cursor and VS Code use `url`; **Antigravity and
 > Windsurf use `serverUrl`**; Claude Code uses a CLI command. Copy the right block below.
@@ -87,12 +106,12 @@ Use your Render URL (or `http://127.0.0.1:8000/mcp` for local). Replace `<TOKEN>
 ### Claude Code (terminal)
 
 ```bash
-claude mcp add --transport http portfolio \
-  https://<your-app-name>.onrender.com/mcp \
-  --header "Authorization: Bearer <TOKEN>"
+claude mcp add --transport http stock-research \
+  https://stock-research-mcp.onrender.com/mcp \
+  --header "Authorization: Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98"
 ```
 
-Then check it: `claude mcp list`. Remove with `claude mcp remove portfolio`.
+Then check it: `claude mcp list`. Remove with `claude mcp remove stock-research`.
 
 ### Claude Desktop
 
@@ -102,12 +121,12 @@ Edit `claude_desktop_config.json` (Settings → Developer → Edit Config):
 ```json
 {
   "mcpServers": {
-    "portfolio": {
+    "stock-research": {
       "command": "npx",
       "args": [
         "-y", "mcp-remote",
-        "https://<your-app-name>.onrender.com/mcp",
-        "--header", "Authorization: Bearer <TOKEN>"
+        "https://stock-research-mcp.onrender.com/mcp",
+        "--header", "Authorization: Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98"
       ]
     }
   }
@@ -123,10 +142,10 @@ Edit `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (per-project):
 ```json
 {
   "mcpServers": {
-    "portfolio": {
-      "url": "https://<your-app-name>.onrender.com/mcp",
+    "stock-research": {
+      "url": "https://stock-research-mcp.onrender.com/mcp",
       "headers": {
-        "Authorization": "Bearer <TOKEN>"
+        "Authorization": "Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98"
       }
     }
   }
@@ -144,10 +163,10 @@ agent panel → **Manage MCP Servers → View raw config**, or edit
 ```json
 {
   "mcpServers": {
-    "portfolio": {
-      "serverUrl": "https://<your-app-name>.onrender.com/mcp",
+    "stock-research": {
+      "serverUrl": "https://stock-research-mcp.onrender.com/mcp",
       "headers": {
-        "Authorization": "Bearer <TOKEN>"
+        "Authorization": "Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98"
       }
     }
   }
@@ -164,10 +183,10 @@ Windsurf also uses **`serverUrl`**. Edit `~/.codeium/windsurf/mcp_config.json`
 ```json
 {
   "mcpServers": {
-    "portfolio": {
-      "serverUrl": "https://<your-app-name>.onrender.com/mcp",
+    "stock-research": {
+      "serverUrl": "https://stock-research-mcp.onrender.com/mcp",
       "headers": {
-        "Authorization": "Bearer <TOKEN>"
+        "Authorization": "Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98"
       }
     }
   }
@@ -184,11 +203,11 @@ Palette):
 ```json
 {
   "servers": {
-    "portfolio": {
+    "stock-research": {
       "type": "http",
-      "url": "https://<your-app-name>.onrender.com/mcp",
+      "url": "https://stock-research-mcp.onrender.com/mcp",
       "headers": {
-        "Authorization": "Bearer <TOKEN>"
+        "Authorization": "Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98"
       }
     }
   }
@@ -204,8 +223,8 @@ For agents that **only** support local stdio servers, bridge to the remote URL w
 [`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
 
 ```bash
-npx -y mcp-remote https://<your-app-name>.onrender.com/mcp \
-  --header "Authorization: Bearer <TOKEN>"
+npx -y mcp-remote https://stock-research-mcp.onrender.com/mcp \
+  --header "Authorization: Bearer mYfUEnx-jnDKlUTHIkUXhCWhMBPgxuzmSvCfxegrt98"
 ```
 
 Point the client's `command`/`args` at that (as in the Claude Desktop example).
@@ -232,6 +251,9 @@ Once connected, try prompts like:
 - A shared bearer token is a pragmatic choice for a personal/portfolio project. The MCP spec's
   full answer for public servers is **OAuth 2.1 with PKCE**; adopt that if you expose this to
   untrusted clients.
+- The token shown in this README is a **deliberately public demo token** so anyone can try the
+  hosted instance. Never reuse it for a private deployment — generate your own with
+  `python -c "import secrets; print(secrets.token_urlsafe(32))"` and keep it secret.
 
 ---
 

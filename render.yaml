@@ -4,7 +4,7 @@
 # prompted (it is intentionally not stored here).
 services:
   - type: web
-    name: portfolio-research-mcp
+    name: stock-research-mcp
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
